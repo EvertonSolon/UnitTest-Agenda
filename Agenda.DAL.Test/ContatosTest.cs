@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Agenda.Domain;
+using AutoFixture;
 
 namespace Agenda.DAL.Test
 {
@@ -12,11 +13,13 @@ namespace Agenda.DAL.Test
     public class ContatosTest : BaseTest
     {
         Contatos _contatos;
+        Fixture _fixture;
 
         [SetUp]
         public void SetUp()
         {
             _contatos = new Contatos();
+            _fixture = new Fixture();
         }
 
         //IncluirContatoTest
@@ -24,11 +27,7 @@ namespace Agenda.DAL.Test
         public void AdicionarContatoTest()
         {
             //Monta
-            var contato = new Contato
-            {
-                Id = Guid.NewGuid(),
-                Nome = "JoaoTest"
-            };
+            var contato = _fixture.Create<Contato>();
 
             //Executa
             _contatos.Adicionar(contato);
@@ -42,11 +41,7 @@ namespace Agenda.DAL.Test
         public void ObterContatoTest()
         {
             //Monta
-            var contato = new Contato
-            {
-                Id = Guid.NewGuid(),
-                Nome = "MariaTest"
-            };
+            var contato = _fixture.Create<Contato>();
 
             //Executa
             _contatos.Adicionar(contato);
@@ -61,17 +56,8 @@ namespace Agenda.DAL.Test
         public void ObterTodosContatosTest()
         {
             //Monta
-            var contato = new Contato
-            {
-                Id = Guid.NewGuid(),
-                Nome = "ClaudiaTest"
-            };
-
-            var contato2 = new Contato
-            {
-                Id = Guid.NewGuid(),
-                Nome = "SilviaTest"
-            };
+            var contato = _fixture.Create<Contato>();
+            var contato2 = _fixture.Create<Contato>();
 
             //Executa
             _contatos.Adicionar(contato);
@@ -90,6 +76,7 @@ namespace Agenda.DAL.Test
         public void TearDown()
         {
             _contatos = null;
+            _fixture = null;
         }
 
     }

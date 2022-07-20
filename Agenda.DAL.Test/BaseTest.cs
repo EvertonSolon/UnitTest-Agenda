@@ -49,6 +49,7 @@ namespace Agenda.DAL.Test
             using (var con = new SqlConnection(_strCon))
             {
                 con.Open();
+                
                 var scriptSql = File
                     .ReadAllText($@"{appBase}\{_script}")
                     .Replace("$(DefaultDataPath)", $@"{appBase}")
