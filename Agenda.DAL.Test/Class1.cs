@@ -16,6 +16,12 @@ namespace Agenda.DAL.Test
 
         }
 
+        [Test]
+        public void Test()
+        {
+
+        }
+
         [TearDown]
         public void TearDown()
         {
