@@ -24,11 +24,14 @@ namespace Agenda.DAL.Test
         public void AdicionarContatoTest()
         {
             //Monta
-            var id = Guid.NewGuid().ToString();
-            var nome = "FulanoTest";
+            var contato = new Contato
+            {
+                Id = Guid.NewGuid(),
+                Nome = "JoaoTest"
+            };
 
             //Executa
-            _contatos.Adicionar(id, nome);
+            _contatos.Adicionar(contato);
 
             //Verifica
             Assert.True(true);
@@ -39,15 +42,19 @@ namespace Agenda.DAL.Test
         public void ObterContatoTest()
         {
             //Monta
-            var id = Guid.NewGuid().ToString();
-            var nome = "MariaTest";
+            var contato = new Contato
+            {
+                Id = Guid.NewGuid(),
+                Nome = "MariaTest"
+            };
 
             //Executa
-            _contatos.Adicionar(id, nome);
-            var nomeResultado = _contatos.Obter(id);
+            _contatos.Adicionar(contato);
+            var nomeResultado = _contatos.Obter(contato.Id);
 
             //Verifica
-            Assert.AreEqual(nome, nomeResultado);
+            Assert.AreEqual(contato.Id, nomeResultado.Id);
+            Assert.AreEqual(contato.Nome, nomeResultado.Nome);
         }
 
 
