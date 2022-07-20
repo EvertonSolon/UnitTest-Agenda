@@ -34,7 +34,7 @@ namespace Agenda.UIDesktop
 
             cmd.ExecuteNonQuery();
 
-            sql = String.Format("Select Nome from Contato where Id = '{0}';", id);
+            sql = string.Format("Select Nome from Contato where Id = '{0}';", id);
 
             cmd = new SqlCommand(sql, con); 
 

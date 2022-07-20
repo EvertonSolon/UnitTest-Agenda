@@ -48,13 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ContatosTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agenda.DAL\Agenda.DAL.csproj">
       <Project>{d186dc43-f3ef-469b-87ea-39f0a2c5cd86}</Project>
       <Name>Agenda.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agenda.Domain\Agenda.Domain.csproj">
+      <Project>{9d389658-fecb-4597-a042-0ff99a0eb639}</Project>
+      <Name>Agenda.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
