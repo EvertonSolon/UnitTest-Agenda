@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 using Agenda.Domain;
+using Dapper;
 
 namespace Agenda.DAL
 {
     public class Contatos
     {
         private readonly string _strCon;
-        //private readonly SqlConnection _con;
 
         public Contatos()
         {
-            //_strCon = @"Server=.\SQLEXPRESS;Database=Agenda;Trusted_Connection=True";
             _strCon = ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
         }
 
         public void Adicionar(Contato contato)
         {
-            //using(var con = _con)
             using (var con = new SqlConnection(_strCon))
             {
                 con.Open();
@@ -30,8 +29,6 @@ namespace Agenda.DAL
 
                 cmd.ExecuteNonQuery();
             }
-
-            //_con.Close();
         }
 
         public Contato Obter(Guid id)
@@ -63,23 +60,26 @@ namespace Agenda.DAL
 
             using (var con = new SqlConnection(_strCon))
             {
-                con.Open();
-
                 var sql = string.Format("Select * from Contato;");
+                contatos = con.Query<Contato>(sql).ToList();
 
-                var cmd = new SqlCommand(sql, con);
+                //con.Open();
 
-                var sqlDataReader = cmd.ExecuteReader();
-                sqlDataReader.Read();
+                //var sql = string.Format("Select * from Contato;");
 
-                while (sqlDataReader.Read())
-                {
-                    var contato = new Contato();
-                    contato.Id = Guid.Parse(sqlDataReader["Id"].ToString());
-                    contato.Nome = sqlDataReader["Nome"].ToString();
+                //var cmd = new SqlCommand(sql, con);
 
-                    contatos.Add(contato);
-                }
+                //var sqlDataReader = cmd.ExecuteReader();
+                //sqlDataReader.Read();
+
+                //while (sqlDataReader.Read())
+                //{
+                //    var contato = new Contato();
+                //    contato.Id = Guid.Parse(sqlDataReader["Id"].ToString());
+                //    contato.Nome = sqlDataReader["Nome"].ToString();
+
+                //    contatos.Add(contato);
+                //}
             }
 
 
