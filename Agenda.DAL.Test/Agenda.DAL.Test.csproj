@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
     <Compile Include="ContatosTest.cs" />
+    <Compile Include="ContatosTest_v2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

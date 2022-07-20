@@ -9,8 +9,7 @@ using AutoFixture;
 
 namespace Agenda.DAL.Test
 {
-    [TestFixture]
-    public class ContatosTest : BaseTest
+    public class ContatosTest_v2 : BaseTest
     {
         Contatos _contatos;
         Fixture _fixture;
@@ -22,18 +21,20 @@ namespace Agenda.DAL.Test
             _fixture = new Fixture();
         }
 
-        //IncluirContatoTest
+        //ObterContatoTest
         [Test]
-        public void AdicionarContatoTest()
+        public void ObterContatoTest()
         {
             //Monta
             var contato = _fixture.Create<Contato>();
 
             //Executa
             _contatos.Adicionar(contato);
+            var nomeResultado = _contatos.Obter(contato.Id);
 
             //Verifica
-            Assert.True(true);
+            Assert.AreEqual(contato.Id, nomeResultado.Id);
+            Assert.AreEqual(contato.Nome, nomeResultado.Nome);
         }
 
         [TearDown]
@@ -42,6 +43,5 @@ namespace Agenda.DAL.Test
             _contatos = null;
             _fixture = null;
         }
-
     }
 }
